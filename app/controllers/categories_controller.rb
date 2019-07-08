@@ -4,17 +4,24 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @category = Category.all
+    @categories = Category.joins(:products).group(:category)
   end
+
 
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @product = Product.new
+    @products = Product.where(category_id: @category.id)
+
+
   end
 
   # GET /categories/new
   def new
     @category = Category.new
+
   end
 
   # GET /categories/1/edit

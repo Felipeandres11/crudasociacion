@@ -9,9 +9,10 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'categories/navbar'%>
   </head>
 
-  <body>
+  <body class="py-2">
     <%= yield %>
   </body>
 </html>

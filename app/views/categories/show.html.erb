@@ -1,9 +1,59 @@
-<p id="notice"><%= notice %></p>
+<%= form_with(model: [ @category, @product]) do |form| %>
+  <%= form.hidden_field :category_id, value: @category.id %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+<div class="row">
+  <div class="col-sm-6">
+
+        <h1>Lista de Productos</h1>
+
+        <table class="table">
+        <thead>
+            <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+
+
+            </tr>
+        </thead>
+
+        <tbody>
+        <%  @products.each do |p| %>
+
+
+            <tr>
+                <td><%= p.name %> </td>
+                <td><%= p.price %></td>
+                <td><%= link_to "Borrar", category_product_path(@category, p), method: :delete %></td>
+
+
+
+            </tr>
+
+        <% end %>
+
+        </tbody>
+        </table>
+  </div>
+
+
+
+
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
